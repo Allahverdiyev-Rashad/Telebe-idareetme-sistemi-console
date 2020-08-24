@@ -260,6 +260,8 @@ def removeStudentData():
             students.pop(i)            
             
             print("\n----------Tələbənin məlumatları silindi----------\n")
+            
+            break
            
 
 ''' Burada proqramdan istifadə qaydaları verilmişdir.
