@@ -1,7 +1,5 @@
 #           DataBase
-class student:
-    
-    
+class student:   
     def __init__(self, studentCode = "Kod", name = "Ad", surname = "Soyad", email = "Email", number = "Nömrə"):
         
         '''student class-nın parametrləri''' 

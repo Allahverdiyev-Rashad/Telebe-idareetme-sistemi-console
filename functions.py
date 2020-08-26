@@ -1,6 +1,7 @@
 import re
 from db import student,students
 
+
 def addStudent():
     
         ''' Daxil olan məlumatlar əsasında student class-dan obyekt
@@ -9,117 +10,76 @@ def addStudent():
             Burada A tələbənin kodu, B tələbənin adı, C soyadı,
             D mail adresi, E isə nömrəsidir '''
             
-        while True:
+        while True:          
+            A = input("Tələbənin 3 rəqəmli kodunu daxil edin: ")          
+            if len(A) != 3 or re.search("\s",A) or re.search("[a-zA-Z]",A):            
+                print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")                
+            else:                
+                break     
             
-            A = input("Tələbənin 3 rəqəmli kodunu daxil edin: ")
+        while True:         
+            B = input("Tələbənin adını daxil edin: ")         
+            if re.search("[0-9]",B) or re.search("\s",B):              
+                print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")                        
+            else:               
+                break               
+        
+        while True:             
+            C = input("Tələbənin soyadını daxil edin: ")           
+            if re.search("[0-9]",C) or re.search("\s",C):              
+                print("\n-----Səhvlik-----\n\nSoyad yalnız hərflərdən ibarət olmalıdır")           
+            else:               
+                break
             
-            if len(A) != 3 or re.search("\s",A) or re.search("[a-zA-Z]",A):
-            
-                print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")
+        while True:           
+            D = input("Tələbənin mail adresini daxil edin: ")           
+            if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',D) or re.search("\s",D):           
+                print("\n-----Səhvlik-----\n\nMail adresi düzgün deyil")               
+            else:                
+                break
                 
-            else:
-                
+        while True:             
+            E = input("Tələbənin nömrəsini daxil edin: ")            
+            if not E.startswith('+994') or re.search("[a-zA-Z]",E) or re.search("\s",E):            
+                print("\n-----Səhvlik-----\n\nTələbənin mobil nömrəsi +994 ilə başlamalıdır və rəqəmlərdən ibarət olmalıdır")                
+            else:               
                 break
         
-            
-        while True:
-            
-            B = input("Tələbənin adını daxil edin: ")
-            
-            if re.search("[0-9]",B) or re.search("\s",B):
-                
-                print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")              
-            
-            else:
-                
-                break
-                
-        
-        while True:  
-            
-            C = input("Tələbənin soyadını daxil edin: ")
-            
-            if re.search("[0-9]",C) or re.search("\s",C):
-                
-                print("\n-----Səhvlik-----\n\nSoyad yalnız hərflərdən ibarət olmalıdır")
-            
-            else:
-                
-                break
-            
-        while True: 
-            
-            D = input("Tələbənin mail adresini daxil edin: ")
-            
-            if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',D) or re.search("\s",D):
-            
-                print("\n-----Səhvlik-----\n\nMail adresi düzgün deyil")
-                
-            else:
-                
-                break
-                
-        while True: 
-            
-            E = input("Tələbənin nömrəsini daxil edin: ")
-            
-            if not E.startswith('+994') or re.search("[a-zA-Z]",E) or re.search("\s",E):
-            
-                print("\n-----Səhvlik-----\n\nTələbənin mobil nömrəsi +994 ilə başlamalıdır və rəqəmlərdən ibarət olmalıdır")
-                
-            else:
-                
-                break
-        
-        students.append(student(A,B,C,D,E))
-           
+        students.append(student(A,B,C,D,E))           
                       
             
 def showAllStudentsData():
     
     ''' Hazırda students class-da olan məlumatların hamısını çap etmək üçün çağırılır'''
     
-    for i in students:
-        
+    for i in students:       
         print(f"\nTələbənin kodu: {i.studentCode}\nTələbənin adı: {i.name}\nTələbənin soyadı: {i.surname}\n"
               f"Tələbənin mail adresi: {i.email}\nTələbənin nömrəsi: {i.number}\n")
+
 
 def searchForName():
     
     ''' Tələbə adına görə axtarış etmək üçün çağırılır '''
     
-    while True:
-            
-        Name = input("Tələbənin adını daxil edin: ")
-            
-        if re.search("[0-9]",Name) or re.search("\s",Name):
-                
-            print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")              
-            
-        else:
-                
-            break
-        
+    while True:            
+        Name = input("Tələbənin adını daxil edin: ")           
+        if re.search("[0-9]",Name) or re.search("\s",Name):                
+            print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")                          
+        else:                
+            break        
     j = []
     
-    for i in range(len(students)):
-        
-        if Name == students[i].name:
-            
-            j.append(students[i].name)
-            
+    for i in range(len(students)):       
+        if Name == students[i].name:           
+            j.append(students[i].name)           
             print(f"Tələbənin kodu: {students[i].studentCode}\nTələbənin adı: {students[i].name}\n"
                   f"Tələbənin soyadı: {students[i].surname}\nTələbənin mail adresi: {students[i].email}\n"
-                  f"Tələbənin nömrəsi: {students[i].number}")
-            
-        elif Name != students[i].name:
-            
+                  f"Tələbənin nömrəsi: {students[i].number}")            
+        elif Name != students[i].name:           
             j.append(students[i].name)
             
-    if not Name in j:
-        
-        print("\n-----Səhvlik-----\n\nSiyahıda belə tələbə yoxdur\n\nAxtarışı dayandırmaq üçün 'dayan' əmrini daxil edin")
-        
+    if not Name in j:        
+        print("\n-----Səhvlik-----\n\nSiyahıda belə tələbə yoxdur\n\nAxtarışı dayandırmaq üçün 'dayan' əmrini daxil edin")        
         searchForName()
             
             
@@ -129,73 +89,43 @@ def changeData():
         d mail adresi, e isə nömrəsidir.Bu funksiya tələbələrin 
         məlumatlarını dəyişdirmək üçün çağırılır'''
         
-    while True:
+    while True:           
+        a = input("Məlumatını dəyişmək istədiyiniz tələbənin kodunu daxil edin: ")          
+        if len(a) != 3 or re.search("\s",a) or re.search("[a-zA-Z]",a):           
+            print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")               
+        else:               
+            break       
             
-        a = input("Məlumatını dəyişmək istədiyiniz tələbənin kodunu daxil edin: ")
-            
-        if len(a) != 3 or re.search("\s",a) or re.search("[a-zA-Z]",a):
-            
-            print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")
-                
-        else:
-                
-            break
+    while True:            
+        b = input("Tələbənin yeni adı: ")            
+        if re.search("[0-9]",b) or re.search("\s",b):                
+            print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")                          
+        else:              
+            break               
         
-            
-    while True:
-            
-        b = input("Tələbənin yeni adı: ")
-            
-        if re.search("[0-9]",b) or re.search("\s",b):
-                
-            print("\n-----Səhvlik-----\n\nAd yalnız hərflərdən ibarət olmalıdır")              
-            
-        else:
-                
-            break
-                
-        
-    while True:  
-            
-        c = input("Tələbənin yeni soyadı: ")
-            
-        if re.search("[0-9]",c) or re.search("\s",c):
-                
-            print("\n-----Səhvlik-----\n\nSoyad yalnız hərflərdən ibarət olmalıdır")
-            
-        else:
-                
+    while True:            
+        c = input("Tələbənin yeni soyadı: ")           
+        if re.search("[0-9]",c) or re.search("\s",c):               
+            print("\n-----Səhvlik-----\n\nSoyad yalnız hərflərdən ibarət olmalıdır")          
+        else:              
             break
             
-    while True: 
-            
-        d = input("Tələbənin yeni emaili: ")
-            
-        if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',d) or re.search("\s",d):
-            
-            print("\n-----Səhvlik-----\n\nMail adresi düzgün deyil")
-                
-        else:
-                
+    while True:          
+        d = input("Tələbənin yeni emaili: ")         
+        if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',d) or re.search("\s",d):          
+            print("\n-----Səhvlik-----\n\nMail adresi düzgün deyil")              
+        else: 
             break
                 
-    while True: 
-            
-        e = input("Tələbənin yeni nömrəsi: ")
-            
-        if not e.startswith('+994') or re.search("[a-zA-Z]",e) or re.search("\s",e):
-            
-            print("\n-----Səhvlik-----\n\nTələbənin mobil nömrəsi +994 ilə başlamalıdır və rəqəmlərdən ibarət olmalıdır")
-                
-        else:
-                
+    while True:            
+        e = input("Tələbənin yeni nömrəsi: ")           
+        if not e.startswith('+994') or re.search("[a-zA-Z]",e) or re.search("\s",e):          
+            print("\n-----Səhvlik-----\n\nTələbənin mobil nömrəsi +994 ilə başlamalıdır və rəqəmlərdən ibarət olmalıdır")              
+        else:               
             break
-        
-        
-    for i in range(len(students)):
-        
-        if a == students[i].studentCode:
-            
+              
+    for i in range(len(students)):        
+        if a == students[i].studentCode:           
             students[i].name = b
             students[i].surname = c
             students[i].email = d
@@ -204,34 +134,26 @@ def changeData():
             print((f"Tələbənin kodu: {students[i].studentCode}\nTələbənin adı: {students[i].name}\n"
                   f"Tələbənin soyadı: {students[i].surname}\nTələbənin mail adresi: {students[i].email}\n"
                   f"Tələbənin nömrəsi: {students[i].number}"))
+  
             
 def removeStudentData():
     
     ''' Burada x tələbənin kodudur.Bu funksiya students listindən 
         tələbələrin məlumatlarını silmək üçün çağırılır'''
     
-    while True:
-            
-        x = input("Məlumatlarını silmək istədiyiniz tələbənin kodunu daxil edin: ")
-            
-        if len(x) != 3 or re.search("\s",x) or re.search("[a-zA-Z]",x):
-            
-            print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")
-                
-        else:
-                
-            break
-        
+    while True:         
+        x = input("Məlumatlarını silmək istədiyiniz tələbənin kodunu daxil edin: ")           
+        if len(x) != 3 or re.search("\s",x) or re.search("[a-zA-Z]",x):          
+            print("\n-----Səhvlik-----\n\nTələbə kodu 3 rəqəmli ədəd olmalıdır")              
+        else:               
+            break      
     
-    for i in range(len(students)):
-        
-        if x == students[i].studentCode:
-            
-            students.pop(i)            
-            
-            print("\n----------Tələbənin məlumatları silindi----------\n")
-            
+    for i in range(len(students)):   
+        if x == students[i].studentCode:           
+            students.pop(i)                       
+            print("\n----------Tələbənin məlumatları silindi----------\n")           
             break
+
 
 def rules():
     
