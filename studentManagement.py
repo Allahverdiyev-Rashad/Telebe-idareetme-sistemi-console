@@ -4,7 +4,6 @@ print("\n-----Proqram işə salındı-----\n")
 rules()
 
 while True:   
- 
     process = input("İcra etmək istədiyiniz əməliyyatı seçin: ")
     
     if process == "1":        
