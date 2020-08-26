@@ -1,31 +1,6 @@
-
 import re
+from db import student,students
 
-class student:
-    
-    
-    def __init__(self, studentCode = "Kod", name = "Ad", surname = "Soyad", email = "Email", number = "Nömrə"):
-        
-        ''' student class-nın parametrləri''' 
-        
-        self.studentCode = studentCode
-        self.name = name
-        self.surname = surname
-        self.email = email
-        self.number = number
-        
-        
-    
-        
-
-''' Nümunə üçün student class-dan 2 obyekt yaradılmışdır.
-    İstəyə görə silinə də bilər'''
-    
-students = [student("123","Azər","Nəsibli","azer@gmail.com","+9941234567"),
-            student("435","Elvin","Xələfov","elvinx@gmail.com","+9941325221")
-            ]
-
-  
 def addStudent():
     
         ''' Daxil olan məlumatlar əsasında student class-dan obyekt
@@ -257,69 +232,14 @@ def removeStudentData():
             print("\n----------Tələbənin məlumatları silindi----------\n")
             
             break
-           
 
-''' Burada proqramdan istifadə qaydaları verilmişdir.
+def rules():
+    
+    ''' Burada proqramdan istifadə qaydaları verilmişdir.
     Konsol aşağı sürüşdükcə qaydalar yuxarıda qaldığı üçün
     qaydaları çap edən rules funksiyası yaradılıb və 
     hər əməliyyatdan sonra çağırılır.'''
-
-print("\n-----Proqram işə salındı-----\n")
-
-def rules():
     
     print("\nİstifadə qaydaları aşağıdakı kimidir:\n1 - Tələbə əlavə et\n2 - Tələbə koduna görə tələbə məlumatlarını sil\n"
      "3 - Tələbə koduna görə tələbə məlumatlarını dəyişdir\n4 - Tələbə adına görə axtar və tələbənin məlumatlarına bax\n"
      "5 - Bütün tələbə məlumatlarını göstər\n6 - Proqramı sonlandır\n")
-
-rules()
-
-while True:   
-    
-    process = input("İcra etmək istədiyiniz əməliyyatı seçin: ")
-    
-    if process == "1":
-        
-        addStudent()
-        rules()
-        
-    elif process == "2":
-        
-        removeStudentData()
-        rules()
-        
-    elif process == "3":
-        
-        changeData()
-        rules()
-        
-    elif process == "4":
-        
-        searchForName()
-        rules()
-        
-    elif process == "5":
-        
-        showAllStudentsData()
-        rules()
-        
-    elif process == "6":
-        
-        print("\n-----Proqram sonlandırıldı-----")
-        
-        break
-    
-    else:
-        
-        print("Daxil edilən məlumat səhvdir.Xahiş edirik yenidən yoxlayın")
-        
-  
-    
-    
-    
-
-
-
-
-
-
