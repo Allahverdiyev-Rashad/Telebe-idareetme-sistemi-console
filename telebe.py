@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Aug 22 15:32:14 2020
 
-@author: MSI GAMING
-"""
 import re
 
 class student:
